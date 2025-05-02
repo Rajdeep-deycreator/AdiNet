@@ -17,7 +17,7 @@ console.log(dp)
 sessionStorage.setItem("d",dp)
 sdp()
 }).catch((error)=>{
-  alert(error.message)
+  console.log(error.message)
 }
 )
 }
@@ -178,8 +178,8 @@ function sdp() {
   var dpp=sessionStorage.getItem("d")
   console.log("prpic="+dpp)
   prbu.src=dpp
-  prbu.style.height="70px";
-  prbu.style.width= "70px";
+  prbu.style.height="100px";
+  prbu.style.width= "100px";
   prbu.style.borderRadius= "50%";
   prbu.style.display= "block";
   prbu.style.objectFit= "cover";

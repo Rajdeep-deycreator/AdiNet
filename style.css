@@ -132,7 +132,7 @@ body {
 }
 #namm{
   position: relative;
-  top:100%;
+
   margin:0;
 }
 #pic{
@@ -173,4 +173,7 @@ body {
   margin-top: 2px;
   background-color: #7E89FF;
 
+}
+#nap{
+  display: block;
 }
