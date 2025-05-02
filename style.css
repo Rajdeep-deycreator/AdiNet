@@ -3,13 +3,14 @@ body {
     background-color:#000000;
     margin: 0px;
     overflow-y: auto;
+    color: #FFFFFF;
 }
 #firstr{
   display:flex;
   overflow-x: hidden;
 }
 #nam{
-  background: url("/resources/file-C78znmxMNBSNzt3sEahj69.webp");
+  background: url("/resources/IMG-20250427-WA0003.jpg");
   height: 50px;
   width: 90px;
   background-size: 90px 50px;
@@ -57,15 +58,6 @@ body {
   margin-top: 2px;  
   border-width: 0;
 }
-#prof{
-  height:20px;
-  width:20px;
-  border-radius:50%;
-  border-width: 0;
-  background-size: 100% 100%;
-  margin-left: 60px;
-  margin-top: 2px;
-}
 #parent{
   display: flex;
 }
@@ -111,4 +103,74 @@ body {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+}
+#top{
+  display: flex;
+  color: #FFFFFF;
+}
+#firstrow{
+  display: flex;
+  gap: 10px;
+  
+}
+
+#back{
+  background: url("/resources/back.png");
+  height:40px;
+  width:40px;
+  background-size: cover;
+  border-width: 0px;
+}
+#logout{
+  background: url('/resources/logout.png');
+  position: relative;
+  left: 78%;
+  height: 40px;
+  width: 40px;
+  background-size: cover;
+  border-width: 0;
+}
+#namm{
+  position: relative;
+  top:100%;
+  margin:0;
+}
+#pic{
+  background-color: #FFFFFF;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+#updy{
+  border: 1px solid #FFFFFF;
+  margin: 10px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #0015FFD9,#B54141);
+}
+#upn{
+  margin: 8px;
+  margin-top: 19px;
+  border-radius: 30px;
+  width: 80%;
+  font-size: 30px;
+}
+#subb{
+  background-color: #6400FF;
+  width:80%;
+  margin: 8px;
+  color: #ffffff;
+  border-radius: 20px;
+  border-width:30x;
+  border-color: #ffffff;
+}
+#prof{
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+  border-width: 0;
+  margin-left: 50px;
+  margin-top: 2px;
+  background-color: #7E89FF;
+
 }

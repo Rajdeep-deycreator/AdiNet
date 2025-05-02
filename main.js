@@ -1,28 +1,38 @@
-function sea(){
-  window.location.href="search.html"
-}
+var i;
+var emai;
+var dp;
+
+
 function check(){
-var id=localStorage.getItem('i');
-if (id===null){
+ id=localStorage.getItem('i');
+ emai=localStorage.getItem('e')
+if (id===null || emai===null){
   window.location.href="signup.html"
 }else{
   console.log(id)
+  console.log(emai)
+  fs.collection(emai).doc("personal_data").get().then((pdata)=>{
+  dp=pdata.data().dp
+console.log(dp)
+sessionStorage.setItem("d",dp)
+sdp()
+}).catch((error)=>{
+  alert(error.message)
+}
+)
 }
 }
 check()
 function lgout(){
-   localStorage.removeItem("i")
+   localStorage.clear()
    check()
-}
-history.pushState(null ,"",location.href)
-window.onpopstate = function (){
-  history.pushState(null,"",location.href)
 }
 const parent=document.getElementById('recent')
 const parent2=document.getElementById('result')
 
 document.getElementById("se").addEventListener("keydown", function(event) {
   if (event.key === "Enter") {
+    parent2.innerHTML=""
     var da=document.getElementById("se").value
     if(da !== null){
       let tomestamp= Date.now()
@@ -55,6 +65,7 @@ function display() {
     his.setAttribute("id","sbu")
     parent.appendChild(his)
     his.onclick=function () {
+      parent2.innerHTML=""
       document.getElementById('se').value=this.value
       fs.collection('users').doc(this.value).get().then((dc) => {
       var prd=document.createElement('div')
@@ -71,5 +82,107 @@ function display() {
 
   }
 }
+var topcred=document.getElementById('top')
+topcred.innerHTML += emai
 }
 display()
+function prof(){
+  window.location.href='/profile.html'
+}
+function sea(){
+  window.location.href="search.html"
+}
+var downloadlink;
+
+function subb(param) {
+  var fil=document.getElementById('pi').files[0]
+  var upn=document.getElementById('upn')
+  var upnvalue=upn.value
+  if(fil){
+    console.log(fil.name)
+    const storgref=stor.ref(emai+'/'+'dp/'+fil.name)
+    const metadata={
+      contentType:'image/jpeg'
+    }
+    
+    // Start the file upload
+        const uptask = storgref.put(fil, metadata);
+
+        // Listen for state changes, errors, and completion
+        uptask.on('state_changed', (snap) => {
+          // Progress updates
+          const prog = (snap.bytesTransferred / snap.totalBytes) * 100;
+          const sr = document.createElement('div');
+          sr.innerHTML = prog + '% uploaded';
+          document.body.appendChild(sr);
+        }, (error) => {
+          // Handle upload errors
+          alert('Upload error: ' + error.message);
+        }, () => {
+          // Upload completed successfully, get download URL
+         uptask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+            console.log('File available at', downloadURL);;
+            downloadlink=downloadURL;
+            console.log(emai)
+            if(upnvalue !==""){
+  const creden={
+    n:document.getElementById('upn').value,
+    dp:downloadlink
+  }
+  fs.collection(emai).doc('personal_data').update(creden).then(()=>{
+    alert("sucess")
+  }).catch((error)=>{
+    alert(error.message)
+  })
+            }else{
+              const creden={
+    dp:downloadlink
+  }
+  fs.collection(emai).doc('personal_data').update(creden).then(()=>{
+    alert("sucess")
+  }).catch((error)=>{
+    alert(error.message)
+  })
+  
+            }
+          }).catch((error) => {
+            console.error('Error getting download URL:', error);
+          });
+         
+        
+  })
+  }else{
+    const creden={
+      n:document.getElementById('upn').value
+    }
+    fs.collection(emai).doc('personal_data').update(creden).then(()=>{
+      alert('sucess')
+    }
+    ).catch((error)=>{
+      alert(error.message)
+    }
+    )
+  }
+  
+  
+  
+}
+fs.collection(emai).doc("personal_data").get().then((pdata)=>{
+  dp=pdata.data().dp
+}).catch((error)=>{
+  alert(error.message)
+}
+)
+function sdp() {
+  var prbu=document.getElementById('prpic')
+  var dpp=sessionStorage.getItem("d")
+  console.log("prpic="+dpp)
+  prbu.src=dpp
+  prbu.style.height="70px";
+  prbu.style.width= "70px";
+  prbu.style.borderRadius= "50%";
+  prbu.style.display= "block";
+  prbu.style.objectFit= "cover";
+
+}
+check()

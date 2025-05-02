@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>profile</title>
+  <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+</head>
+
+<body>
+  <div id="top">
+    <input type="button"  onclick="history.back()" id=back>
+    <input type="button" id=logout onclick=lgout()>
+  
+  </div>""
+  <div id="pic">
+    
+  </div>
+  <div id="updy">
+  <label for="pi">update profile picture:</label>
+  <input type="file" name="pi" id="pi" accept="image/*"  />
+  <input type="text" name="name" id="upn" placeholder="Update your name">
+  <input type="button" value="submit" id=subb onclick="subb()">
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  
+  <!-- Firebase Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+  <script src="mai.js"></script>
+
+  <script src="main.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+    console.log(emai)
+    var topd=document.getElementById('top')
+    var newCAtT=document.createElement('div')
+    ema=localStorage.getItem('e')
+    newCAtT.innerHTML =ema
+    
+    topd.appendChild(newCAtT)
+    var namm=document.getElementById('namm')
+    fs.collection(ema).doc('personal_data').get().then((perdat)=>{
+      console.log(perdat.data().n)
+      namm.innerHTML='<p>'+perdat.data().n+'</p>'
+  
+    }
+    )
+  </script>
+  
+</body>
+</html>  

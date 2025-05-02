@@ -54,7 +54,9 @@ function sub() {
       id=uid;
       if(id){
         localStorage.setItem('i',id);
+        localStorage.setItem('e',email)
       }
+      
       console.log('User ID after login:', uid);
       window.location.href='index.html'
 
