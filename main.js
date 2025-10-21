@@ -2,13 +2,24 @@ var i;
 var emai;
 var dp;
 
-
+function log(a,b) {
+ auth.signInWithEmailAndPassword(a,b).then(()=>{
+   console.log("loged in")
+ }
+ ).catch((error)=>{
+   alert("could not login because:"+error.message)
+  
+ })
+}
 function check(){
  id=localStorage.getItem('i');
  emai=localStorage.getItem('e')
 if (id===null || emai===null){
   window.location.href="signup.html"
 }else{
+  var checkEmail=localStorage.getItem("e")
+  var checkPass=localStorage.getItem('pass')
+  log(checkEmail,checkPass)
   console.log(id)
   console.log(emai)
   fs.collection(emai).doc("personal_data").get().then((pdata)=>{
@@ -16,11 +27,14 @@ if (id===null || emai===null){
 console.log(dp)
 sessionStorage.setItem("d",dp)
 sdp()
+prdp()
 }).catch((error)=>{
   console.log(error.message)
 }
 )
+
 }
+
 }
 check()
 function lgout(){
@@ -86,9 +100,7 @@ var topcred=document.getElementById('top')
 topcred.innerHTML += emai
 }
 display()
-function prof(){
-  window.location.href='/profile.html'
-}
+
 function sea(){
   window.location.href="search.html"
 }
@@ -175,6 +187,7 @@ fs.collection(emai).doc("personal_data").get().then((pdata)=>{
 )
 function sdp() {
   var prbu=document.getElementById('prpic')
+  
   var dpp=sessionStorage.getItem("d")
   console.log("prpic="+dpp)
   prbu.src=dpp
@@ -183,6 +196,36 @@ function sdp() {
   prbu.style.borderRadius= "50%";
   prbu.style.display= "block";
   prbu.style.objectFit= "cover";
+  
+
 
 }
+async function prdp() {
+  try {
+    // Wait for #prof element to be loaded
+    await new Promise(resolve => {
+      const intervalId = setInterval(() => {
+        const prof = document.getElementById('prof');
+        if (prof) {
+          clearInterval(intervalId);
+          resolve();
+        }
+      }, 100); // Check every 100ms
+    });
+
+    var dp = await sessionStorage.getItem('d');
+    console.log("display" + dp);
+    var prof = document.getElementById('prof');
+    prof.style.width = '20px';
+    prof.style.height = '20px';
+    prof.style.borderRadius = '50%';
+    prof.style.borderWidth = '0';
+    prof.style.marginLeft = '50px';
+    prof.style.marginTop = '2px';
+    prof.style.backgroundImage = `url(${dp})`;
+  } catch (error) {
+    alert(error.message);
+  }
+}
+prdp()
 check()

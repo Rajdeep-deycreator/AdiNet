@@ -163,17 +163,16 @@ body {
   border-width:30x;
   border-color: #ffffff;
 }
-#prof{
+
+#nap{
+  display: block;
+}
+/*#prof{
   width: 20px;
   height: 20px;
-
   border-radius: 50%;
   border-width: 0;
   margin-left: 50px;
   margin-top: 2px;
-  background-color: #7E89FF;
-
-}
-#nap{
-  display: block;
-}
+  background-color: #000000;
+}*/

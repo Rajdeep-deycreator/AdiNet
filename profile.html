@@ -67,8 +67,10 @@
     ed.value = ema
     ed.innerText += 'Edit Profile'
     ed.onclick=function (){
+      alert("edit")
       console.log(this.value)
       sessionStorage.setItem('edpr',this.value)
+     window.location.href="edit.html"
     }
     ed.style.position="relative"
     ed.style.width="100%"

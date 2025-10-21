@@ -55,6 +55,7 @@ function sub() {
       if(id){
         localStorage.setItem('i',id);
         localStorage.setItem('e',email)
+        localStorage.setItem('pass',pass)
       }
       
       console.log('User ID after login:', uid);
