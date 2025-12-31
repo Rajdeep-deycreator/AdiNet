@@ -31,9 +31,7 @@
     <input type="button" id=add>
     
       <input type="button" id=video>
-      <div id="prof">
-        <input type="button" value="">
-      </div>
+      <button  id=prpic onclick=profile() />
   </div>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   
@@ -45,8 +43,28 @@
   <script src="mai.js"></script>
 
   <script src="main.js"></script>
-  <script type="text/javascript" charset="utf-8">
+  <script>
     check()
+  var dshow=localStorage.getItem('d')
+  if (dshow){
+    if(dshow !== null){
+      console.log('yes')
+      var prbutton= document.getElementById("prpic")
+      prbutton.style.background="url("+dshow+")"
+      prbutton.style.backgroundSize="cover"
+      prbutton.style.borderRadius="50%"
+      prbutton.style.borderWidth="0"
+      prbutton.style.width="20px"
+      prbutton.style.marginLeft="30px"
+
+    
+        
+      
+    }
+  }
+  function profile(){
+    window.location.href="/profile.html";
+}
   </script>
 </body>
 </html>

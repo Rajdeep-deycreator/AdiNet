@@ -25,8 +25,12 @@ if (id===null || emai===null){
   fs.collection(emai).doc("personal_data").get().then((pdata)=>{
   dp=pdata.data().dp
 console.log(dp)
-sessionStorage.setItem("d",dp)
-sdp()
+localStorage.setItem("d",dp)
+if(dp.value){
+  sdp()
+  
+}
+
 prdp()
 }).catch((error)=>{
   console.log(error.message)
@@ -185,21 +189,6 @@ fs.collection(emai).doc("personal_data").get().then((pdata)=>{
   alert(error.message)
 }
 )
-function sdp() {
-  var prbu=document.getElementById('prpic')
-  
-  var dpp=sessionStorage.getItem("d")
-  console.log("prpic="+dpp)
-  prbu.src=dpp
-  prbu.style.height="100px";
-  prbu.style.width= "100px";
-  prbu.style.borderRadius= "50%";
-  prbu.style.display= "block";
-  prbu.style.objectFit= "cover";
-  
-
-
-}
 async function prdp() {
   try {
     // Wait for #prof element to be loaded
@@ -213,7 +202,7 @@ async function prdp() {
       }, 100); // Check every 100ms
     });
 
-    var dp = await sessionStorage.getItem('d');
+    var dp = await localStorage.getItem('d');
     console.log("display" + dp);
     var prof = document.getElementById('prof');
     prof.style.width = '20px';
@@ -223,6 +212,32 @@ async function prdp() {
     prof.style.marginLeft = '50px';
     prof.style.marginTop = '2px';
     prof.style.backgroundImage = `url(${dp})`;
+  } catch (error) {
+    alert(error.message);
+  }
+}
+async function sdp() {
+  try {
+    // Wait for #prof element to be loaded
+    await new Promise(resolve => {
+      const intervalId = setInterval(() => {
+        const prbu = document.getElementById('prpic');
+        if (prof) {
+          clearInterval(intervalId);
+          resolve();
+        }
+      }, 100); // Check every 100ms
+    });
+
+    var dp = await localStorage.getItem('d');
+var prbu = document.getElementById("prpic")
+console.log("prpic=" + dp)
+prbu.setAttribute("src", dp)
+prbu.style.height = "100px";
+prbu.style.width = "100px";
+prbu.style.borderRadius = "50%";
+prbu.style.marginLeft = "10px";
+prbu.style.objectFit = "cover";
   } catch (error) {
     alert(error.message);
   }
