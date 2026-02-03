@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>profile</title>
+  <title>searched profile</title>
   <link rel="stylesheet" href="style.css" type="text/css" media="all" />
 </head>
 
@@ -53,25 +53,22 @@
     var profile=document.getElementById("prpic")
     var topd=document.getElementById('top')
     var newCAtT=document.createElement('div')
-    ema=localStorage.getItem('e')
+    ema=sessionStorage.getItem('searched')
     newCAtT.innerHTML =ema
-    prpic.src=localStorage.getItem('d')
     topd.appendChild(newCAtT)
     var namm=document.getElementById('namm')
     fs.collection(ema).doc('personal_data').get().then((perdat)=>{
       console.log(perdat.data().n)
       namm.innerHTML='<p>'+perdat.data().n+'</p>'
+      prpic.src=perdat.data().dp;
     }
     )
     var ed=document.createElement('button')
-    ed.setAttribute('id','edit')
+    ed.setAttribute('id','follow')
     ed.value = ema
-    ed.innerText += 'Edit Profile'
+    ed.innerText += 'follow'
     ed.onclick=function (){
-      alert("edit")
-      console.log(this.value)
-      sessionStorage.setItem('edpr',this.value)
-     window.location.href="edit.html"
+      alert("you started following\t"+ema)
     }
     ed.style.position="relative"
     ed.style.width="100%"

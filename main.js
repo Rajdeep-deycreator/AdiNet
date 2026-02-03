@@ -85,13 +85,14 @@ function display() {
     his.onclick=function () {
       parent2.innerHTML=""
       document.getElementById('se').value=this.value
+      sessionStorage.setItem("searched",document.getElementById('se').value=this.value)
       fs.collection('users').doc(this.value).get().then((dc) => {
       var prd=document.createElement('div')
         prd.style.margintop='15px';
   prd.style.color='#FFFFFF';
   prd.style.backgroundcolor=' #000000';
   prd.style.fontsize='6px';
-        prd.innerHTML= "<img id=prph src=/resources/add.png ><h6>"+dc.id+"</h6><div id=nan><p>"+dc.data().n+"</p><input type=button id=prb value='Go to profile'></input></p></div>"
+        prd.innerHTML= "<img id=prph src="+dc.data().dp+" ><h6>"+dc.id+"</h6><div id=nan><p>"+dc.data().n+"</p><input type=button id=prb value='Go to profile' onclick='gtp()'></input></p></div>"
         parent2.appendChild(prd)
         
 
@@ -242,5 +243,17 @@ prbu.style.objectFit = "cover";
     alert(error.message);
   }
 }
+
+function gtp() {
+  var tosearch=sessionStorage.getItem('searched')
+  var your=localStorage.getItem('e')
+  if (tosearch=== your){
+    window.location.href="/profile.html"
+  }else if(tosearch!== your){
+    window.location.href="/searched.html"
+  }
+}
+
+
 prdp()
 check()

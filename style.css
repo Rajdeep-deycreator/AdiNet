@@ -167,7 +167,7 @@ body {
 #nap{
   display: block;
 }
-/*#prof{
+#prof{
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -175,4 +175,48 @@ body {
   margin-left: 50px;
   margin-top: 2px;
   background-color: #000000;
-}*/
+}
+#con{
+  display:block;
+  text-align: center;
+  color: #000000;
+  background-color: #FFFFFFC4;
+  margin-left: 9px;
+  margin-right: 9px;
+  border-radius: 20px;
+  border: 3px solid black;
+  position:fixed;
+  top:120px;
+}
+#user{
+  margin:7px;
+  border-radius: 20px;
+}
+#pass{
+  margin:7px;
+  border-radius: 20px;
+}
+#n{
+  margin:7px;
+  border-radius: 20px;
+}
+#nnu{
+  margin:7px;
+  border-radius: 20px;
+}
+#sub{
+  margin:7px;
+  border-radius: 20px;
+  display: block;
+  width:185px;
+  margin-left:75px;
+  border: 2px solid white;
+  background-color: #0015FA;
+  color:white;
+  font-size: 20px;
+}
+#prpic{
+  width:100px;
+  height: 100px;
+  border-radius: 50%;
+}
