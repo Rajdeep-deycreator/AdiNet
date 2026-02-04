@@ -179,30 +179,35 @@ body {
 #con{
   display:block;
   text-align: center;
-  color: #000000;
-  background-color: #FFFFFFC4;
+  color: #FFFFFF;
+  background-color: #232224AB;
   margin-left: 9px;
   margin-right: 9px;
   border-radius: 20px;
-  border: 3px solid black;
-  position:fixed;
+  
+  position:relative;
   top:120px;
+  animation: slide 1s ease-out, changecolor 4s infinite alternate;
 }
 #user{
   margin:7px;
   border-radius: 20px;
+  animation: changecolor 4s infinite alternate ;
 }
 #pass{
   margin:7px;
   border-radius: 20px;
+  animation: changecolor 4s infinite alternate ;
 }
 #n{
   margin:7px;
   border-radius: 20px;
+  animation: changecolor 4s infinite alternate ;
 }
 #nnu{
   margin:7px;
   border-radius: 20px;
+  animation: changecolor 4s infinite alternate ;
 }
 #sub{
   margin:7px;
@@ -219,4 +224,23 @@ body {
   width:100px;
   height: 100px;
   border-radius: 50%;
+}
+@keyframes slide{
+  0%{
+    transform: translateY(120px) ;
+  }
+  100%{
+    transform: translateY(0px);
+  }
+}
+@keyframes changecolor{
+  0%{
+    border: 2px solid #9E53FF;
+  }50%{
+    border: 2px solid #886FFF;
+  }75%{
+    border: 2px solid #5734FF;
+  }100%{
+    border: 2px solid #340AFE;
+  }
 }
